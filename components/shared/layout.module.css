@@ -1,0 +1,18 @@
+.Layout {
+    text-align         : center;
+    display            : grid;
+    grid-template-areas: "logo header header header"
+        "side main main main";
+    grid-template-rows: max-content auto;
+    height            : 100vh;
+}
+
+.Head {
+    grid-area: header;
+    border   : 1px solid black;
+}
+
+.Logo {
+    grid-area: logo;
+    border   : 1px solid black;
+}

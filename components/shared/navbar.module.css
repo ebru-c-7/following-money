@@ -1,0 +1,9 @@
+.Container {
+    grid-area: side;
+    border   : 1px solid black;
+}
+
+.Content {
+    grid-area: main;
+    border   : 1px solid black;
+}
