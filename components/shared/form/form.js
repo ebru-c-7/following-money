@@ -9,9 +9,14 @@ function Form(props) {
 
   const formHandler = (e) => {
     e.preventDefault();
+    const obj = {};
     for (const i of data.concat(addedData)) {
-      console.log(e.target[i.name].value);
+      obj[i.name] =
+        e.target[i.name] && e.target[i.name].value
+          ? e.target[i.name].value
+          : i.data.config.defaultValue;
     }
+    props.submitHandler(obj);
   };
 
   const toggleInputHandler = (id) => {

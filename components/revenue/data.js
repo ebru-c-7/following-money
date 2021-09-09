@@ -25,7 +25,7 @@ export const REVENUE_FORM = [
   },
   {
     label: "Source: ",
-    name: "source-type",
+    name: "source",
     element: "select",
     config: { required: true },
     options: [
@@ -70,7 +70,6 @@ export const REVENUE_FORM_ADDED = [
     id: "installment",
     text: "Use Installment",
     name: "installment",
-    value: 1,
     data: {
       label: "Installment: ",
       name: "installment",
@@ -84,7 +83,6 @@ export const REVENUE_FORM_ADDED = [
     id: "repeat",
     text: "Repeat This",
     name: "repeat",
-    value: 0,
     data: {
       label: "Repeat: ",
       name: "repeat",

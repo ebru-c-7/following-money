@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getSession } from "next-auth/client";
 
 import {
@@ -8,8 +9,17 @@ import {
 import Form from "../../components/shared/form/form";
 
 function NewRevenueEntryPage(props) {
+  const submitHandler = async (data) => {
+    const response = await axios.post("/api/revenue/", data);
+    console.log(response.data);
+  };
+
   return (
-    <Form data={REVENUE_FORM} addedData={REVENUE_FORM_ADDED}>
+    <Form
+      data={REVENUE_FORM}
+      addedData={REVENUE_FORM_ADDED}
+      submitHandler={submitHandler}
+    >
       New Revenue
     </Form>
   );

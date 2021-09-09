@@ -25,7 +25,7 @@ export const COST_FORM = [
   },
   {
     label: "Type: ",
-    name: "cost-type",
+    name: "type",
     element: "select",
     config: { required: true },
     options: [
@@ -67,22 +67,6 @@ export const COST_FORM = [
       },
     ],
   },
-  // {
-  //   label: "Installment: ",
-  //   name: "installment",
-  //   element: "input",
-  //   type: "number",
-  //   placeholder: "",
-  //   config: { step: "1", defaultValue: 1 },
-  // },
-  // {
-  //   label: "Repeat: ",
-  //   name: "repeat",
-  //   element: "input",
-  //   type: "number",
-  //   placeholder: "",
-  //   config: { step: "1", defaultValue: 0 },
-  // },
   {
     label: "Note: ",
     name: "note",
@@ -97,7 +81,6 @@ export const COST_FORM_ADDED = [
     id: "installment",
     text: "Use Installment",
     name: "installment",
-    value: 1,
     data: {
       label: "Installment: ",
       name: "installment",
@@ -111,7 +94,6 @@ export const COST_FORM_ADDED = [
     id: "repeat",
     text: "Repeat this",
     name: "repeat",
-    value: 0,
     data: {
       label: "Repeat: ",
       name: "repeat",
