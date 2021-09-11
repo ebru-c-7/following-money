@@ -10,8 +10,9 @@ import Form from "../../components/shared/form/form";
 
 function NewRevenueEntryPage(props) {
   const submitHandler = async (data) => {
+    console.log(data);
     const response = await axios.post("/api/revenue/", data);
-    console.log(response.data);
+    console.log(response);
   };
 
   return (

@@ -1,7 +1,10 @@
 import { getSession } from "next-auth/client";
+import { getAllRevenues } from "../api/revenue";
+
+import RecordList from "../../components/shared/record/record-list";
 
 function RevenueListPage(props) {
-  return <div>list revenue</div>;
+  return <RecordList data={props.data} />;
 }
 
 export async function getServerSideProps(context) {
@@ -16,10 +19,13 @@ export async function getServerSideProps(context) {
     };
   }
 
+  const result = await getAllRevenues(session.user.id);
+
   return {
     props: {
       session,
       user: session.user,
+      data: result,
     },
   };
 }

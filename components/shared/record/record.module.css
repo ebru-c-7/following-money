@@ -1,0 +1,20 @@
+.Item {
+    display: flex;
+    border : 1px black solid;
+    margin : 10px;
+    padding: 10px
+}
+
+.Item>div {
+    width: 25%;
+}
+
+.Date {
+    position: relative;
+}
+
+.Year {
+    position : absolute;
+    top      : 30%;
+    transform: rotateZ(270deg);
+}

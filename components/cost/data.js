@@ -73,6 +73,7 @@ export const COST_FORM = [
     element: "input",
     type: "text",
     placeholder: "Note for the cost item",
+    data: { config: { defaultValue: "" } },
   },
 ];
 

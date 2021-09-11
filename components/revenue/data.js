@@ -62,6 +62,7 @@ export const REVENUE_FORM = [
     element: "input",
     type: "text",
     placeholder: "Note for the revenue item",
+    data: { config: { defaultValue: "" } },
   },
 ];
 
