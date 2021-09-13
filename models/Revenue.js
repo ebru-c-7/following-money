@@ -25,7 +25,7 @@ const RevenueSchema = new mongoose.Schema({
   },
   repeat: {
     type: Number,
-    default: 1,
+    default: 0,
   },
   note: {
     type: String,
@@ -36,6 +36,7 @@ const RevenueSchema = new mongoose.Schema({
     required: true,
     ref: "User",
   },
+  links: [{ type: mongoose.Types.ObjectId, ref: "Revenue" }],
 });
 
 export default mongoose.models.Revenue ||
