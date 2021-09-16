@@ -43,7 +43,7 @@ export async function getAllRevenues(user) {
       el._id = el._id.toString();
       el.date = JSON.stringify(new Date(el.date));
       el.user = user;
-      delete el.links; //work on that
+      el.links = el.links.map((id) => id.toString());
       return el;
     });
     return revenues;

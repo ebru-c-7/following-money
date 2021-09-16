@@ -4,6 +4,7 @@ import { getAllCosts } from "../api/cost";
 import RecordList from "../../components/shared/record/record-list";
 
 function CostListPage(props) {
+  console.log(props.data);
   return <RecordList data={props.data} />;
 }
 

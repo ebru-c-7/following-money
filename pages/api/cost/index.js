@@ -40,7 +40,7 @@ export async function getAllCosts(user) {
     console.log(user);
     costs = costs.map((cost) => {
       const el = cost.toObject({ getters: true });
-      delete el.links; //to work on it
+      el.links = el.links.map((id) => id.toString());
       el._id = el._id.toString();
       el.date = JSON.stringify(new Date(el.date));
       el.user = user;

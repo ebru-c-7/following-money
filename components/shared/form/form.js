@@ -5,7 +5,7 @@ import Select from "./select";
 
 function Form(props) {
   const { data, addedData } = props;
-  const [openItems, setOpenItems] = useState([]);
+  const [openItem, setOpenItem] = useState(null);
 
   const formHandler = (e) => {
     e.preventDefault();
@@ -19,15 +19,8 @@ function Form(props) {
     props.submitHandler(obj);
   };
 
-  const toggleInputHandler = (id) => {
-    const items = [...openItems];
-    if (items.includes(id)) {
-      items.splice(items.indexOf(id), 1);
-    } else {
-      items.push(id);
-    }
-    return setOpenItems(items);
-  };
+  const toggleInputHandler = (id) =>
+    openItem === id ? setOpenItem(null) : setOpenItem(id);
 
   const items = data.map((item) => {
     if (item.element === "input") {
@@ -38,18 +31,20 @@ function Form(props) {
     }
   });
 
-  const addedItems = addedData.map((item, i) => (
-    <div key={item.id}>
-      <button
-        type="button"
-        key={item.id}
-        onClick={toggleInputHandler.bind(this, item.id)}
-      >
-        {item.text}
-      </button>
-      {openItems.includes(item.id) && <Input {...item.data} />}
-    </div>
-  ));
+  const addedItems = addedData.map((item, i) => {
+    return (
+      <div key={item.id}>
+        <button
+          type="button"
+          key={item.id}
+          onClick={toggleInputHandler.bind(this, item.id)}
+        >
+          {item.text}
+        </button>
+        {openItem === item.id && <Input {...item.data} />}
+      </div>
+    );
+  });
 
   return (
     <div>

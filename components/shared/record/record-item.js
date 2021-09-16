@@ -1,8 +1,21 @@
 import classes from "./record.module.css";
 
 function RecordItem(props) {
-  const showInstallment = props.installment != 1;
-  const showRepeat = props.repeat != 0;
+  let config = null;
+  let title = "";
+  if (props.links && props.links.length > 0) {
+    const length = props.links.length;
+    let index = props.links.findIndex((id) => id === props.id);
+    config = `${++index}/${length}`;
+
+    if (props.installment != 1) {
+      title = `${index}. of ${length} installments with total value ${
+        +props.amount * length
+      }`;
+    } else if (props.repeat != 0) {
+      title = `${index}. of ${length} repeated items`;
+    }
+  }
 
   const date = new Date(props.date.split("T")[0]);
   const day = date.getDate();
@@ -21,9 +34,7 @@ function RecordItem(props) {
         <p className={classes.Year}>{year}</p>
       </div>
       <div>{`${props.source || props.type} - ${props.name}`}</div>
-      <div>
-        {(showInstallment && props.installment) || (showRepeat && props.repeat)}
-      </div>
+      <div title={title}>{config}</div>
       <div>{props.amount}</div>
     </div>
   );
