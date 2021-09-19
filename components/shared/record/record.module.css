@@ -1,8 +1,16 @@
 .Item {
-    display: flex;
-    border : 1px black solid;
-    margin : 10px;
-    padding: 10px
+    display   : flex;
+    /* border : 1px black solid; */
+    margin    : 20px 10px;
+    padding   : 10px;
+}
+
+.Item.Cost {
+    box-shadow: 7px 8px 10px 0px #d569691f;
+}
+
+.Item.Revenue {
+    box-shadow: 7px 8px 10px 0px #8bc34a29;
 }
 
 .Item>div {
@@ -10,11 +18,47 @@
 }
 
 .Date {
-    position: relative;
+    /* position: relative; */
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
 }
 
 .Year {
-    position : absolute;
-    top      : 30%;
-    transform: rotateZ(270deg);
+    /* position : absolute; */
+    /* top      : 30%; */
+    transform  : rotateZ(270deg);
+    height     : fit-content;
+    font-weight: 900;
+}
+
+.DateBox {
+    width   : 70px;
+    position: relative;
+}
+
+.Month {
+    color                  : white;
+    background-color       : #3d4651;
+    padding                : 5px;
+    border-top-left-radius : 6px;
+    border-top-right-radius: 6px;
+}
+
+
+.Day {
+    color                     : white;
+    background-color          : #3c71b5;
+    padding                   : 5px;
+    margin-top                : 2px;
+    border-bottom-left-radius : 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.Icon {
+    position       : absolute;
+    top            : -15px;
+    display        : flex;
+    width          : 100%;
+    justify-content: space-evenly;
 }

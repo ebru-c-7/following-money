@@ -1,5 +1,15 @@
-.Layout{
-    background-image: url("../../assets/sky-pink.jpg");
-    height: 100vh;
-    background-size: cover;
+.Layout {
+    height         : 100vh;
+    position       : relative;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.Dark {
+    background-color: var(--dark);
+}
+
+.Light {
+    background-color: var(--grey);
 }

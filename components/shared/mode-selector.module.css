@@ -1,0 +1,15 @@
+.Icon {
+    position: absolute;
+    right   : 0;
+    top     : 0;
+    margin  : 20px;
+    cursor  : pointer;
+}
+
+.Dark {
+    color: var(--light);
+}
+
+.Light {
+    color: var(--sunny);
+}

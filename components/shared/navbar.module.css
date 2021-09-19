@@ -7,3 +7,8 @@
     grid-area: main;
     border   : 1px solid black;
 }
+
+.Container ul {
+    list-style          : none;
+    padding-inline-start: 0px;
+}

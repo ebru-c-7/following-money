@@ -5,7 +5,7 @@ import RecordList from "../../components/shared/record/record-list";
 
 function CostListPage(props) {
   console.log(props.data);
-  return <RecordList data={props.data} />;
+  return <RecordList type="cost" title={"Cost List"} data={props.data} />;
 }
 
 export async function getServerSideProps(context) {

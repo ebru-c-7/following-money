@@ -1,5 +1,7 @@
 import classes from "./record.module.css";
 
+import Icon from "./Icon";
+
 function RecordItem(props) {
   let config = null;
   let title = "";
@@ -25,13 +27,23 @@ function RecordItem(props) {
     date
   );
 
+  const itemClass = [
+    classes.Item,
+    props.listType === "cost" ? classes.Cost : classes.Revenue,
+  ].join(" ");
+
   return (
-    <div className={classes.Item} title={props.note}>
+    <div className={itemClass} title={props.note}>
       <div className={classes.Date}>
-        <p>{day}</p>
-        <p>{month}</p>
-        <p>{weekday}</p>
         <p className={classes.Year}>{year}</p>
+        <div
+          className={classes.DateBox}
+          title={`${day} ${month} ${weekday}, ${year} `}
+        >
+          <Icon className={classes.Icon} />
+          <p className={classes.Month}>{month}</p>
+          <p className={classes.Day}>{day}</p>
+        </div>
       </div>
       <div>{`${props.source || props.type} - ${props.name}`}</div>
       <div title={title}>{config}</div>

@@ -4,7 +4,7 @@ import { getAllRevenues } from "../api/revenue";
 import RecordList from "../../components/shared/record/record-list";
 
 function RevenueListPage(props) {
-  return <RecordList data={props.data} />;
+  return <RecordList type="revenue" title={"Revenue List"} data={props.data} />;
 }
 
 export async function getServerSideProps(context) {

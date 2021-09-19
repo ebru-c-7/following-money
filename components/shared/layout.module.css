@@ -7,12 +7,41 @@
     height            : 100vh;
 }
 
+.Layout.Dark {
+    background-color: var(--dark);
+    color           : var(--light);
+}
+
+.Layout.Light {
+    background-color: var(--grey);
+    color           : var(--dark);
+}
+
 .Head {
     grid-area: header;
-    border   : 1px solid black;
 }
 
 .Logo {
     grid-area: logo;
-    border   : 1px solid black;
+}
+
+.Logo,
+.Head {
+    border-width   : 1px;
+    border-style   : solid;
+    min-height     : 80px;
+    padding        : 20px;
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+}
+
+.Dark .Head,
+.Dark .Logo {
+    border-color: var(--light);
+}
+
+.Ligth .Head,
+.Ligth .Logo {
+    border-color: var(--dark);
 }
