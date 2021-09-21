@@ -3,8 +3,9 @@
     display            : grid;
     grid-template-areas: "logo header header header"
         "side main main main";
-    grid-template-rows: max-content auto;
-    height            : 100vh;
+    grid-template-rows   : max-content auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height               : 100vh;
 }
 
 .Layout.Dark {

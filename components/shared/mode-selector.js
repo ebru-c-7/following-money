@@ -17,9 +17,11 @@ function ModeSelector(props) {
     classes.Icon,
     mode === DARK_MODE ? classes.Dark : classes.Light,
   ].join(" ");
+  const title = mode === DARK_MODE ? "Open the Lights" : "Turn off the Lights";
 
   return (
     <FontAwesomeIcon
+      title={title}
       icon={faLightbulb}
       className={iconClass}
       size={props.size || "3x"}
