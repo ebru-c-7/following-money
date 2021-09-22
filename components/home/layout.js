@@ -1,4 +1,6 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { fetchMode } from "../../store/reducers/modeSlice";
 import { DARK_MODE } from "../../store/reducers";
 
 import LoginBox from "./login-box";
@@ -8,6 +10,11 @@ import classes from "./layout.module.css";
 
 function Layout() {
   const mode = useSelector((state) => state.mode.mode);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchMode());
+  }, []);
 
   const layoutClass = [
     classes.Layout,

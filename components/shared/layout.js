@@ -4,7 +4,6 @@ import { DARK_MODE } from "../../store/reducers";
 import Image from "next/image";
 
 import Navbar from "./navbar";
-import ModeSelector from "./mode-selector";
 
 import classes from "./layout.module.css";
 import { useDispatch } from "react-redux";
@@ -46,9 +45,10 @@ function Layout(props) {
         <Image src={src} alt="logo" width={80} height={80} />
       </div>
       <div className={classes.Head}>
-        <p>{quote.content}</p>
+        <p className={classes.Quote}>
+          <q>{quote.content}</q>
+        </p>
       </div>
-      <ModeSelector size={"2x"} />
       <Navbar mode={mode} {...props}>
         {props.children}
       </Navbar>

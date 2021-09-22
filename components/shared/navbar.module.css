@@ -1,14 +1,48 @@
 .Container {
-    grid-area: side;
-    border   : 1px solid black;
+    grid-area         : side;
+    border-right-width: 3px;
+    border-right-style: solid;
+}
+
+.Dark.Container {
+    border-color: var(--grey);
+}
+
+.Light.Container {
+    border-color: var(--dark);
 }
 
 .Content {
     grid-area: main;
-    border   : 1px solid black;
+}
+
+.Container nav {
+    height         : 50%;
+    display        : flex;
+    flex-direction : column;
+    justify-content: space-evenly;
 }
 
 .Container ul {
     list-style          : none;
     padding-inline-start: 0px;
+}
+
+.Button {
+    padding      : 15px 10px;
+    cursor       : pointer;
+    border-radius: 5%;
+    font-weight  : bold;
+    width        : 90%;
+    margin       : 0 auto;
+}
+
+.Light .Button {
+    background-color: var(--dark);
+    color           : var(--light);
+}
+
+.Dark .Button {
+    background-color: var(--sunny);
+    color           : var(--dark);
 }

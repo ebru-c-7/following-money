@@ -21,6 +21,7 @@ function ModeSelector(props) {
 
   return (
     <FontAwesomeIcon
+      style={props.style}
       title={title}
       icon={faLightbulb}
       className={iconClass}

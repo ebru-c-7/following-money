@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { signIn } from "next-auth/client";
+import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
@@ -15,10 +16,13 @@ function LoginBox() {
     classes.LoginBox,
     mode === DARK_MODE ? classes.Dark : classes.Light,
   ].join(" ");
+  const logo =
+    mode === DARK_MODE ? "/logo-only-dark.svg" : "/logo-only-light.svg";
 
   return (
     <div className={boxClass}>
       <React.Fragment>
+        <Image src={logo} width={80} height={80} />
         <h1>
           Follow <sub>the</sub> Money
         </h1>
