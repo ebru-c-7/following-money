@@ -1,4 +1,7 @@
+import Header from "../list/header";
 import RecordItem from "./record-item";
+
+import classes from "./record.module.css";
 
 function RecordList(props) {
   if (props.data.length !== 0) {
@@ -7,8 +10,8 @@ function RecordList(props) {
     ));
     return (
       <div>
-        <h1>{props.title}</h1>
-        {items}
+        <Header>{props.title}</Header>
+        <div className={classes.ItemContainer}>{items}</div>
       </div>
     );
   }

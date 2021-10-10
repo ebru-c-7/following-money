@@ -7,6 +7,7 @@ import {
 } from "../../components/revenue/data";
 
 import Form from "../../components/shared/form/form";
+import Header from "../../components/shared/list/header";
 
 function NewRevenueEntryPage(props) {
   const submitHandler = async (data) => {
@@ -21,7 +22,7 @@ function NewRevenueEntryPage(props) {
       addedData={REVENUE_FORM_ADDED}
       submitHandler={submitHandler}
     >
-      New Revenue
+      <Header>New Revenue</Header>
     </Form>
   );
 }

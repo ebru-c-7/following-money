@@ -1,5 +1,14 @@
 export const links = [
   {
+    head: "Dashboard",
+    list: [
+      {
+        title: "View",
+        link: "/dashboard",
+      },
+    ],
+  },
+  {
     head: "Cost",
     list: [
       {

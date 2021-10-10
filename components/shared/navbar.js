@@ -1,5 +1,6 @@
 import { signOut } from "next-auth/client";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { DARK_MODE } from "../../store/reducers";
@@ -11,15 +12,18 @@ import classes from "./navbar.module.css";
 
 function Navbar(props) {
   const mode = useSelector((state) => state.mode.mode);
+  const router = useRouter();
+
+  const isActive = (link) => (router.pathname === link ? classes.Active : "");
 
   const items = links.map((sec) => (
     <section key={sec.head}>
       <h3>{sec.head}</h3>
       <ul>
         {sec.list.map((li) => (
-          <li key={li.title}>
+          <li className={classes.Item} key={li.title}>
             <Link href={li.link}>
-              <a>{li.title}</a>
+              <a className={isActive(li.link)}>{li.title}</a>
             </Link>
           </li>
         ))}

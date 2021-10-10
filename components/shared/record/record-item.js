@@ -1,8 +1,12 @@
-import classes from "./record.module.css";
-
+import { useSelector } from "react-redux";
+import { DARK_MODE } from "../../../store/reducers";
 import Icon from "./Icon";
 
+import classes from "./record.module.css";
+
 function RecordItem(props) {
+  const mode = useSelector((state) => state.mode.mode);
+
   let config = null;
   let title = "";
   if (props.links && props.links.length > 0) {
@@ -30,6 +34,7 @@ function RecordItem(props) {
   const itemClass = [
     classes.Item,
     props.listType === "cost" ? classes.Cost : classes.Revenue,
+    mode === DARK_MODE ? classes.Dark : classes.Light,
   ].join(" ");
 
   return (
@@ -40,14 +45,18 @@ function RecordItem(props) {
           className={classes.DateBox}
           title={`${day} ${month} ${weekday}, ${year} `}
         >
-          <Icon className={classes.Icon} />
+          <Icon className={classes.Icon} mode={mode} />
           <p className={classes.Month}>{month}</p>
           <p className={classes.Day}>{day}</p>
         </div>
       </div>
-      <div>{`${props.source || props.type} - ${props.name}`}</div>
-      <div title={title}>{config}</div>
-      <div>{props.amount}</div>
+      <div className={classes.Content}>
+        <div className={classes.Text}>{`${props.source || props.type} - ${
+          props.name
+        }`}</div>
+        <div title={title}>{config}</div>
+        <div>{props.amount}</div>
+      </div>
     </div>
   );
 }

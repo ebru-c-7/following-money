@@ -1,32 +1,24 @@
+/* .ItemContainer {
+    overflow: scroll;
+} */
+
 .Item {
-    display   : flex;
-    /* border : 1px black solid; */
-    margin    : 20px 10px;
-    padding   : 10px;
+    display: flex;
+    margin : 30px 10px;
 }
 
-.Item.Cost {
-    box-shadow: 7px 8px 10px 0px #d569691f;
-}
-
-.Item.Revenue {
-    box-shadow: 7px 8px 10px 0px #8bc34a29;
-}
-
-.Item>div {
+.Item>div:first-of-type {
     width: 25%;
 }
 
 .Date {
-    /* position: relative; */
     display        : flex;
     justify-content: center;
     align-items    : center;
+
 }
 
 .Year {
-    /* position : absolute; */
-    /* top      : 30%; */
     transform  : rotateZ(270deg);
     height     : fit-content;
     font-weight: 900;
@@ -47,12 +39,20 @@
 
 
 .Day {
-    color                     : white;
-    background-color          : #3c71b5;
     padding                   : 5px;
     margin-top                : 2px;
     border-bottom-left-radius : 6px;
     border-bottom-right-radius: 6px;
+}
+
+.Dark .Day {
+    background-color: var(--sunny);
+    color           : var(--dark)
+}
+
+.Light .Day {
+    background-color: var(--purple);
+    color           : var(--light)
 }
 
 .Icon {
@@ -61,4 +61,40 @@
     display        : flex;
     width          : 100%;
     justify-content: space-evenly;
+}
+
+.Content {
+    display                   : flex;
+    justify-content           : space-between;
+    align-items               : center;
+    width                     : 75%;
+    font-weight               : bolder;
+    border-top-right-radius   : 82px;
+    border-bottom-right-radius: 82px;
+    padding                   : 20px;
+}
+
+.Dark .Content {
+    /* background-color: tomato; */
+    background-color: var(--purple);
+}
+
+.Light .Content {
+    background-color: var(--sunny);
+}
+
+.Text {
+    width: 50%;
+}
+
+.Content>div:nth-child(2) {
+    width: 20%;
+}
+
+.Content>div:nth-child(3) {
+    width: 30%;
+}
+
+.Text {
+    text-align: left;
 }

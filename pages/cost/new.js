@@ -4,6 +4,7 @@ import { getSession } from "next-auth/client";
 import { COST_FORM, COST_FORM_ADDED } from "../../components/cost/data";
 
 import Form from "../../components/shared/form/form";
+import Header from "../../components/shared/list/header";
 
 function NewCostEntryPage(props) {
   const submitHandler = async (data) => {
@@ -17,7 +18,7 @@ function NewCostEntryPage(props) {
       addedData={COST_FORM_ADDED}
       submitHandler={submitHandler}
     >
-      New Cost
+      <Header>New Cost</Header>
     </Form>
   );
 }

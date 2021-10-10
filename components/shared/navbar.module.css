@@ -13,7 +13,8 @@
 }
 
 .Content {
-    grid-area: main;
+    grid-area : main;
+    overflow-y: scroll;
 }
 
 .Container nav {
@@ -26,6 +27,28 @@
 .Container ul {
     list-style          : none;
     padding-inline-start: 0px;
+}
+
+/* li element */
+.Item {
+    margin-bottom: 10px;
+}
+
+.Active {
+    padding-bottom     : 3px;
+    border-bottom-width: 3px;
+    border-bottom-style: dashed;
+}
+
+.Dark .Active {
+    color              : var(--dark-sunny);
+    border-bottom-color: var(--dark-purple);
+
+}
+
+.Light .Active {
+    color              : var(--dark-purple);
+    border-bottom-color: var(--dark-sunny);
 }
 
 .Button {

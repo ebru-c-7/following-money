@@ -1,4 +1,5 @@
 import React from "react";
+import { DARK_MODE } from "../../../store/reducers";
 
 const Icon = (props) => {
   const style1 = {
@@ -10,7 +11,8 @@ const Icon = (props) => {
   const style2 = {
     width: "20px",
     height: "13px",
-    backgroundColor: "#3c71b5",
+    backgroundColor:
+      props.mode === DARK_MODE ? "var(--sunny)" : "var(--purple)",
     borderRadius: "2px",
   };
 
