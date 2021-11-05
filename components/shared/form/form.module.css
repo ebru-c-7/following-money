@@ -1,0 +1,78 @@
+.Form {
+    width     : 400px;
+    margin    : 20px auto 0px;
+    text-align: left;
+}
+
+.Container {
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+}
+
+.Input {}
+
+.Options {
+    display        : flex;
+    justify-content: space-between;
+}
+
+.Select {}
+
+.Option {
+    background-color: var(--grey);
+}
+
+.Dark .Option {
+    background-color: var(--dark);
+}
+
+.Input,
+.Select {
+    border       : none;
+    border-bottom: 1px solid gray;
+
+    width  : 300px;
+    padding: 10px;
+    margin : 10px 0px 10px 5px;
+
+    background   : transparent;
+    color        : inherit;
+    /* color     : white; */
+}
+
+.AddedButton,
+.ButtonContainer>button {
+    background   : transparent;
+    border       : none;
+    color        : inherit;
+    /* color     : white; */
+
+    border-bottom      : 1px solid gray;
+    border-bottom-width: 3px;
+    border-bottom-style: dashed;
+    padding-bottom     : 3px;
+
+    cursor: pointer;
+}
+
+.AddedButton:hover,
+.ButtonContainer>button:hover,
+.AddedButton.Active {
+    color: var(--dark-purple);
+
+    border-bottom-color: var(--sunny);
+}
+
+.Dark .AddedButton:hover,
+.Dark .ButtonContainer>button:hover,
+.Dark .AddedButton.Active {
+    color: var(--sunny);
+
+    border-bottom-color: var(--dark-purple);
+}
+
+.ButtonContainer {
+    display        : flex;
+    justify-content: center;
+}

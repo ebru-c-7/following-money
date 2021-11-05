@@ -14,7 +14,7 @@
 
 .Content {
     grid-area : main;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .Container nav {

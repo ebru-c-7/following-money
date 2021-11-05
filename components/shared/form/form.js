@@ -3,9 +3,15 @@ import { useState } from "react";
 import Input from "./input";
 import Select from "./select";
 
+import classes from "./form.module.css";
+import { arrayToClass } from "../../../util/lib";
+import { useSelector } from "react-redux";
+import { DARK_MODE } from "../../../store/reducers";
+
 function Form(props) {
   const { data, addedData } = props;
   const [openItem, setOpenItem] = useState(null);
+  const mode = useSelector((state) => state.mode.mode);
 
   const formHandler = (e) => {
     e.preventDefault();
@@ -19,8 +25,8 @@ function Form(props) {
     props.submitHandler(obj);
   };
 
-  const toggleInputHandler = (id) =>
-    openItem === id ? setOpenItem(null) : setOpenItem(id);
+  const toggleInputHandler = (item) =>
+    openItem && openItem.id === item.id ? setOpenItem(null) : setOpenItem(item);
 
   const items = data.map((item) => {
     if (item.element === "input") {
@@ -32,27 +38,34 @@ function Form(props) {
   });
 
   const addedItems = addedData.map((item, i) => {
+    const buttonClass = arrayToClass([
+      classes.AddedButton,
+      [openItem && item.id === openItem.id, classes.Active],
+    ]);
     return (
       <div key={item.id}>
         <button
+          className={buttonClass}
           type="button"
           key={item.id}
-          onClick={toggleInputHandler.bind(this, item.id)}
+          onClick={toggleInputHandler.bind(this, item)}
         >
           {item.text}
         </button>
-        {openItem === item.id && <Input {...item.data} />}
       </div>
     );
   });
 
   return (
-    <div>
+    <div className={arrayToClass([[mode === DARK_MODE, classes.Dark]])}>
       {props.children}
-      <form onSubmit={formHandler}>
+      <form onSubmit={formHandler} className={classes.Form}>
         {items}
-        {addedItems}
-        <button type="submit">Submit</button>
+        <div className={classes.Options}>{addedItems}</div>
+        {openItem && <Input {...openItem.data} />}
+        <div className={classes.ButtonContainer}>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   );
