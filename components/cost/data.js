@@ -21,7 +21,7 @@ export const COST_FORM = [
     element: "input",
     type: "number",
     placeholder: "Amount",
-    config: { step: "0.01" },
+    config: { step: "0.01", required: true },
   },
   {
     label: "Type: ",
@@ -88,7 +88,12 @@ export const COST_FORM_ADDED = [
       element: "input",
       type: "number",
       placeholder: "",
-      config: { step: "1", defaultValue: 1 },
+      config: {
+        step: "1",
+        defaultValue: 1,
+        title:
+          "The item amount will be divided <br> and spread over months <br> by the number of months provided",
+      },
     },
   },
   {
@@ -101,7 +106,12 @@ export const COST_FORM_ADDED = [
       element: "input",
       type: "number",
       placeholder: "",
-      config: { step: "1", defaultValue: 0 },
+      config: {
+        step: "1",
+        defaultValue: 0,
+        title:
+          "The item will be repeated <br> by the number of months provided",
+      },
     },
   },
 ];

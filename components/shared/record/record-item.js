@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
+
 import { DARK_MODE } from "../../../store/reducers";
+import ToolTip from "../UI/tool-tip";
 import Icon from "./Icon";
 
 import classes from "./record.module.css";
@@ -15,11 +17,11 @@ function RecordItem(props) {
     config = `${++index}/${length}`;
 
     if (props.installment != 1) {
-      title = `${index}. of ${length} installments with total value ${
+      title = `${index}. of ${length} installments <br/>with total value ${
         +props.amount * length
       }`;
     } else if (props.repeat != 0) {
-      title = `${index}. of ${length} repeated items`;
+      title = `${index}. of ${length} <br/>repeated items`;
     }
   }
 
@@ -54,7 +56,10 @@ function RecordItem(props) {
         <div className={classes.Text}>{`${props.source || props.type} - ${
           props.name
         }`}</div>
-        <div title={title}>{config}</div>
+        <div data-tip={title}>
+          {config}
+          {title && <ToolTip type={mode === DARK_MODE ? "warning" : "error"} />}
+        </div>
         <div>{props.amount}</div>
       </div>
     </div>

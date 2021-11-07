@@ -2,11 +2,12 @@ import { useState } from "react";
 
 import Input from "./input";
 import Select from "./select";
+import ToolTip from "../UI/tool-tip";
 
-import classes from "./form.module.css";
 import { arrayToClass } from "../../../util/lib";
 import { useSelector } from "react-redux";
 import { DARK_MODE } from "../../../store/reducers";
+import classes from "./form.module.css";
 
 function Form(props) {
   const { data, addedData } = props;
@@ -43,7 +44,7 @@ function Form(props) {
       [openItem && item.id === openItem.id, classes.Active],
     ]);
     return (
-      <div key={item.id}>
+      <div key={item.id} data-tip={item.data.config.title}>
         <button
           className={buttonClass}
           type="button"
@@ -52,6 +53,7 @@ function Form(props) {
         >
           {item.text}
         </button>
+        <ToolTip type="info" />
       </div>
     );
   });

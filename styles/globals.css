@@ -40,3 +40,29 @@ input[type=date]::-webkit-calendar-picker-indicator {
   position: absolute;
   opacity : 0;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin            : 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.tip-container {
+  display: inline-block;
+
+  background: white;
+  color     : red;
+  font-size : 12px;
+  text-align: center;
+
+  border-radius: 50%;
+  height       : 16px;
+  width        : 16px;
+  margin       : 0px 4px;
+}
