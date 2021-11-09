@@ -66,3 +66,7 @@ input[type=number] {
   width        : 16px;
   margin       : 0px 4px;
 }
+
+.tip-container_invisible {
+  display: none;
+}

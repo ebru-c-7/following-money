@@ -98,3 +98,13 @@
 .Text {
     text-align: left;
 }
+
+.Action {
+    display              : grid;
+    grid-template-columns: auto auto;
+    grid-gap             : 10px;
+}
+
+.Action>svg {
+    cursor: pointer;
+}

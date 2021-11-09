@@ -30,6 +30,16 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, data: [] });
     }
   }
+
+  if (req.method === "DELETE") {
+    try {
+      const deleted = await deleteRevenue(req.body.id);
+      console.log(req.body);
+      return res.status(200).json({ success: true, data: deleted });
+    } catch (err) {
+      return res.status(400).json({ success: false, data: [] });
+    }
+  }
 }
 
 export async function getAllRevenues(user) {
@@ -89,6 +99,25 @@ export async function postRevenue(obj) {
       }
 
       return revenues;
+    }
+  } catch (err) {
+    return null;
+  }
+}
+
+export async function deleteRevenue(id) {
+  try {
+    await dbConnect();
+    const revenue = await Revenue.findById(id);
+    console.log(revenue);
+    if (revenue.links && revenue.links.length > 0) {
+      const response = await Revenue.deleteMany({
+        _id: { $in: revenue.links },
+      });
+      return response;
+    } else {
+      const response = await Revenue.findByIdAndDelete(id);
+      return response;
     }
   } catch (err) {
     return null;

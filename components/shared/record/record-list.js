@@ -6,7 +6,12 @@ import classes from "./record.module.css";
 function RecordList(props) {
   if (props.data.length !== 0) {
     const items = props.data.map((item) => (
-      <RecordItem listType={props.type} key={item.id} {...item} />
+      <RecordItem
+        listType={props.type}
+        key={item.id}
+        {...item}
+        removeItems={props.removeItems}
+      />
     ));
     return (
       <div>

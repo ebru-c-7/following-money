@@ -1,11 +1,25 @@
+import { useState } from "react";
 import { getSession } from "next-auth/client";
 import { getAllCosts } from "../api/cost";
 
 import RecordList from "../../components/shared/record/record-list";
 
 function CostListPage(props) {
-  console.log(props.data);
-  return <RecordList type="cost" title={"Cost List"} data={props.data} />;
+  const [data, setData] = useState(props.data);
+
+  const removeItemsHandler = (idArray) => {
+    const newData = data.filter((item) => !idArray.includes(item.id));
+    setData(newData);
+  };
+
+  return (
+    <RecordList
+      type="cost"
+      title={"Cost List"}
+      data={data}
+      removeItems={removeItemsHandler}
+    />
+  );
 }
 
 export async function getServerSideProps(context) {

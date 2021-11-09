@@ -30,6 +30,16 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, data: [] });
     }
   }
+
+  if (req.method === "DELETE") {
+    try {
+      const deleted = await deleteCost(req.body.id);
+      console.log(req.body);
+      return res.status(200).json({ success: true, data: deleted });
+    } catch (err) {
+      return res.status(400).json({ success: false, data: [] });
+    }
+  }
 }
 
 export async function getAllCosts(user) {
@@ -88,6 +98,23 @@ export async function postCost(obj) {
       }
 
       return costs;
+    }
+  } catch (err) {
+    return null;
+  }
+}
+
+export async function deleteCost(id) {
+  try {
+    await dbConnect();
+    const cost = await Cost.findById(id);
+    console.log(cost);
+    if (cost.links && cost.links.length > 0) {
+      const response = await Cost.deleteMany({ _id: { $in: cost.links } });
+      return response;
+    } else {
+      const response = await Cost.findByIdAndDelete(id);
+      return response;
     }
   } catch (err) {
     return null;

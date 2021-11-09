@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import Input from "./input";
 import Select from "./select";
@@ -12,6 +12,7 @@ import classes from "./form.module.css";
 function Form(props) {
   const { data, addedData } = props;
   const [openItem, setOpenItem] = useState(null);
+  const formRef = useRef();
   const mode = useSelector((state) => state.mode.mode);
 
   const formHandler = (e) => {
@@ -24,6 +25,8 @@ function Form(props) {
           : i.data.config.defaultValue;
     }
     props.submitHandler(obj);
+    formRef.current.reset();
+    setOpenItem(null);
   };
 
   const toggleInputHandler = (item) =>
@@ -61,7 +64,7 @@ function Form(props) {
   return (
     <div className={arrayToClass([[mode === DARK_MODE, classes.Dark]])}>
       {props.children}
-      <form onSubmit={formHandler} className={classes.Form}>
+      <form ref={formRef} onSubmit={formHandler} className={classes.Form}>
         {items}
         <div className={classes.Options}>{addedItems}</div>
         {openItem && <Input {...openItem.data} />}

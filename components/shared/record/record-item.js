@@ -1,6 +1,9 @@
+import axios from "axios";
 import { useSelector } from "react-redux";
 
 import { DARK_MODE } from "../../../store/reducers";
+import IconDelete from "../UI/icon-delete";
+import IconEdit from "../UI/icon-edit";
 import ToolTip from "../UI/tool-tip";
 import Icon from "./Icon";
 
@@ -8,6 +11,19 @@ import classes from "./record.module.css";
 
 function RecordItem(props) {
   const mode = useSelector((state) => state.mode.mode);
+
+  const deleteHandler = async (type, id, links) => {
+    const response = await axios.delete(`/api/${type}`, { data: { id } });
+    console.log(response.data);
+    if (links && links.length > 0) {
+      props.removeItems(links);
+    } else props.removeItems([id]);
+  };
+
+  const editHandler = async (type, id, data) => {
+    const response = await axios.patch(`/api/${type}/${id}`, { data });
+    console.log(response.data);
+  };
 
   let config = null;
   let title = "";
@@ -60,7 +76,25 @@ function RecordItem(props) {
           {config}
           {title && <ToolTip type={mode === DARK_MODE ? "warning" : "error"} />}
         </div>
-        <div>{props.amount}</div>
+        <div>{props.amount.toFixed(2)}</div>
+        <div className={classes.Action}>
+          <IconEdit
+            title={"Edit"}
+            color={mode === DARK_MODE ? "#f5f6f7" : "#1b1b32"}
+            onClick={() => console.log("open modal")}
+          />
+          <IconDelete
+            title="Delete"
+            color={mode === DARK_MODE ? "#f5f6f7" : "#1b1b32"}
+            onClick={deleteHandler.bind(
+              this,
+              props.listType,
+              props.id,
+              props.links
+            )}
+          />
+          <ToolTip noicon type={mode === DARK_MODE ? "warning" : "error"} />
+        </div>
       </div>
     </div>
   );
