@@ -7,6 +7,5 @@ export const arrayToClass = (arr) => {
       classArr.push(el);
     }
   }
-
   return classArr.join(" ");
 };

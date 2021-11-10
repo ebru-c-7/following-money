@@ -1,10 +1,17 @@
+import { arrayToClass } from "../../../util/lib";
+
 import classes from "./form.module.css";
+import classes2 from "./../UI/modal.module.css";
 
 function Select(props) {
   const { name, options, label, config } = props;
 
   const optionItems = options.map((item) => (
-    <option className={classes.Option} key={item.value} value={item.value}>
+    <option
+      className={arrayToClass([classes.Option, classes2.Option])}
+      key={item.value}
+      value={item.value}
+    >
       {item.text}
     </option>
   ));

@@ -42,6 +42,7 @@ function Form(props) {
   });
 
   const addedItems = addedData.map((item, i) => {
+    if (item.data.config.isOpen && !openItem) setOpenItem(item);
     const buttonClass = arrayToClass([
       classes.AddedButton,
       [openItem && item.id === openItem.id, classes.Active],
