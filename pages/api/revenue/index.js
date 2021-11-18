@@ -80,7 +80,7 @@ export async function postRevenue(obj) {
         loop = +obj.installment;
       } else if (isRepeat) {
         newRevenue = { ...obj };
-        loop = +obj.repeat;
+        loop = +obj.repeat + 1;
       }
 
       const revenues = [];

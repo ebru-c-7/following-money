@@ -27,18 +27,44 @@ function RecordItem(props) {
     } else props.removeItems([id]);
   };
 
-  // const editHandler = async (type, id, data) => {
-  //   const response = await axios.patch(`/api/${type}/${id}`, { data });
-  //   console.log(response.data);
-  // };
-
   const editHandler = () => {
-    console.log("edit");
     setShowModal(true);
   };
 
+  const editSubmitHandler = async (data) => {
+    const oldData = {
+      ...props,
+      date: props.date.includes("T")
+        ? props.date.split("T")[0].replace('"', "").toString()
+        : props.date,
+      amount:
+        props.installment > 1
+          ? +props.amount * +props.installment
+          : +props.amount,
+    };
+    data.amount = +data.amount;
+    const updatedData = {};
+    for (let el in data) {
+      if (data[el] == oldData[el]) continue;
+      else {
+        updatedData[el] = data[el];
+      }
+    }
+
+    console.log(updatedData);
+    const dataWId = { data: updatedData, id: props.id };
+
+    const response = await axios.patch(`/api/${props.listType}/`, dataWId);
+    console.log(response.data);
+    if (response.data.success) {
+      setShowModal(false);
+      props.editItemHandler(response.data.data);
+    }
+  };
+
   let config = null;
-  let title = "";
+  let title,
+    note = "";
   if (props.links && props.links.length > 0) {
     const length = props.links.length;
     let index = props.links.findIndex((id) => id === props.id);
@@ -48,8 +74,12 @@ function RecordItem(props) {
       title = `${index}. of ${length} installments <br/>with total value ${
         +props.amount * length
       }`;
+      note = `More Info: ${index}. of ${length} installments with total value ${
+        +props.amount * length
+      }`;
     } else if (props.repeat != 0) {
       title = `${index}. of ${length} <br/>repeated items`;
+      note = `More Info: ${index}. of ${length} repeated items`;
     }
   }
 
@@ -78,16 +108,19 @@ function RecordItem(props) {
                 : renderRevenueForm(props)
             }
             addedData={
-              props.listType === "cost"
-                ? renderCostOptions(props)
-                : renderRevenueOptions(props)
+              []
+              // props.listType === "cost"
+              //   ? renderCostOptions(props)
+              //   : renderRevenueOptions(props)
             }
-            submitHandler={() => console.log("submit")}
+            submitHandler={editSubmitHandler}
+            buttonText={"Submit Changes"}
           >
             <Header>
               {props.listType === "cost" ? "Edit Cost" : "Edit Revenue"}
             </Header>
           </Form>
+          <div className={classes.NoteText}>{note}</div>
         </Modal>
       )}
       <div className={itemClass} title={props.note}>

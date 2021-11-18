@@ -57,6 +57,10 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input[type=date]:disabled {
+  cursor: not-allowed;
+}
+
 .tip-container {
   background: white;
   color     : red;

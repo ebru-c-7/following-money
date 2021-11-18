@@ -84,7 +84,8 @@
 }
 
 .Text {
-    width: 50%;
+    width     : 50%;
+    text-align: left;
 }
 
 .Content>div:nth-child(2) {
@@ -95,9 +96,6 @@
     width: 30%;
 }
 
-.Text {
-    text-align: left;
-}
 
 .Action {
     display              : grid;
@@ -107,4 +105,10 @@
 
 .Action>svg {
     cursor: pointer;
+}
+
+.NoteText {
+    font-size  : smaller;
+    font-style : italic;
+    font-weight: bold;
 }

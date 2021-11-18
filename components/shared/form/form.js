@@ -22,7 +22,7 @@ function Form(props) {
       obj[i.name] =
         e.target[i.name] && e.target[i.name].value
           ? e.target[i.name].value
-          : i.data.config.defaultValue;
+          : i.config.defaultValue;
     }
     props.submitHandler(obj);
     formRef.current.reset();
@@ -70,7 +70,7 @@ function Form(props) {
         <div className={classes.Options}>{addedItems}</div>
         {openItem && <Input {...openItem.data} />}
         <div className={classes.ButtonContainer}>
-          <button type="submit">Submit</button>
+          <button type="submit">{props.buttonText || "Submit"}</button>
         </div>
       </form>
     </div>

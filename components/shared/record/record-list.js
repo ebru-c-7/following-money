@@ -11,8 +11,10 @@ function RecordList(props) {
         key={item.id}
         {...item}
         removeItems={props.removeItems}
+        editItemHandler={props.editItemHandler}
       />
     ));
+
     return (
       <div>
         <Header>{props.title}</Header>

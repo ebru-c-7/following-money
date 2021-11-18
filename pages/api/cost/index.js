@@ -22,6 +22,17 @@ export default async function handler(req, res) {
     }
   }
 
+  if (req.method === "PATCH") {
+    req.body.user = session.user.id;
+    try {
+      const record = await editCost(req.body.id, req.body.data);
+      if (!record) throw new Error();
+      return res.status(201).json({ success: true, data: record });
+    } catch (err) {
+      return res.status(400).json({ success: false });
+    }
+  }
+
   if (req.method === "GET") {
     try {
       const costs = await getAllCosts(session.user.id);
@@ -79,7 +90,7 @@ export async function postCost(obj) {
         loop = +obj.installment;
       } else if (isRepeat) {
         newCost = { ...obj };
-        loop = +obj.repeat;
+        loop = +obj.repeat + 1;
       }
 
       const costs = [];
@@ -98,6 +109,34 @@ export async function postCost(obj) {
       }
 
       return costs;
+    }
+  } catch (err) {
+    return null;
+  }
+}
+
+export async function editCost(id, obj) {
+  try {
+    await dbConnect();
+    const cost = await Cost.findById(id);
+    console.log(cost);
+
+    if (cost.links && cost.links.length > 0) {
+      let newLinks = [];
+
+      for (let doc of cost.links) {
+        let linkCost = await Cost.findByIdAndUpdate(doc, obj, { new: true });
+        console.log(linkCost);
+        newLinks.push(linkCost);
+      }
+
+      return newLinks;
+    } else {
+      for (let prop in obj) {
+        cost[prop] = obj[prop];
+      }
+      await cost.save();
+      return [cost];
     }
   } catch (err) {
     return null;

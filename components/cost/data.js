@@ -118,8 +118,8 @@ export const COST_FORM_ADDED = [
 
 export const renderCostForm = (item) => {
   let date = item.date.split("T")[0].replace('"', "").toString();
-  let totalCost =
-    item.installment !== 1 ? item.amount * item.installment : item.amount;
+  // let totalCost =
+  //   item.installment !== 1 ? item.amount * item.installment : item.amount;
 
   return [
     {
@@ -136,7 +136,11 @@ export const renderCostForm = (item) => {
       element: "input",
       type: "date",
       placeholder: "Date of the cost item",
-      config: { required: true, defaultValue: date },
+      config: {
+        required: true,
+        defaultValue: date,
+        disabled: item.repeat !== 0,
+      },
     },
     {
       label: "Amount: ",
@@ -144,7 +148,7 @@ export const renderCostForm = (item) => {
       element: "input",
       type: "number",
       placeholder: "Amount",
-      config: { step: "0.01", required: true, defaultValue: totalCost },
+      config: { step: "0.01", required: true, defaultValue: item.amount },
     },
     {
       label: "Type: ",

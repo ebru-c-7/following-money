@@ -9,7 +9,6 @@ const CostSchema = new mongoose.Schema({
   date: {
     type: Date,
     required: [true, "Required area"],
-    default: Date.now,
   },
   amount: {
     type: Number,

@@ -6,9 +6,25 @@ import RecordList from "../../components/shared/record/record-list";
 
 function CostListPage(props) {
   const [data, setData] = useState(props.data);
-
   const removeItemsHandler = (idArray) => {
     const newData = data.filter((item) => !idArray.includes(item.id));
+    setData(newData);
+  };
+
+  const editItemHandler = (updatedObjArr) => {
+    const idArr = updatedObjArr.map((item) => item._id);
+    const newData = data
+      .map((item) => {
+        if (idArr.includes(item.id)) {
+          let newEl = updatedObjArr.find((el) => el._id === item.id);
+          newEl.id = item.id;
+          return newEl;
+        } else return item;
+      })
+      .sort(
+        (a, b) =>
+          new Date(a.date.split("T")[0]) - new Date(b.date.split("T")[0])
+      );
     setData(newData);
   };
 
@@ -18,6 +34,7 @@ function CostListPage(props) {
       title={"Cost List"}
       data={data}
       removeItems={removeItemsHandler}
+      editItemHandler={editItemHandler}
     />
   );
 }
