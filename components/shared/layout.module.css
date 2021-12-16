@@ -8,12 +8,22 @@
     height               : 100vh;
 }
 
-.Layout.Dark {
+.Layout .Select {
+    border: none;
+
+    font-size      : inherit;
+    font-weight    : inherit;
+    text-decoration: underline;
+}
+
+.Layout.Dark,
+.Layout.Dark .Select {
     background-color: var(--dark);
     color           : var(--light);
 }
 
-.Layout.Light {
+.Layout.Light,
+.Layout.Light .Select {
     background-color: var(--grey);
     color           : var(--dark);
 }

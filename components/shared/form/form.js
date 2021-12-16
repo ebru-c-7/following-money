@@ -22,7 +22,7 @@ function Form(props) {
       obj[i.name] =
         e.target[i.name] && e.target[i.name].value
           ? e.target[i.name].value
-          : i.config.defaultValue;
+          : i.data.config.defaultValue;
     }
     props.submitHandler(obj);
     formRef.current.reset();
