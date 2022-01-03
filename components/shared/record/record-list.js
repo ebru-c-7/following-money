@@ -16,7 +16,7 @@ function RecordList(props) {
     ));
 
     return (
-      <div>
+      <div style={{ overflowX: "auto" }}>
         <Header>{props.title}</Header>
         <div className={classes.ItemContainer}>{items}</div>
       </div>

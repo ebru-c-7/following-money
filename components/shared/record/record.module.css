@@ -112,3 +112,31 @@
     font-style : italic;
     font-weight: bold;
 }
+
+@media(max-width: 900px) {
+    .Item {
+        margin: 25px 10px;
+
+        width  : 100%;
+        padding: 0 10px 0 0px;
+
+        justify-content: center;
+    }
+
+    .Item>div:first-of-type {
+        width       : max-content;
+        margin-right: 12px;
+    }
+
+    .Content {
+        min-width: 310px;
+        padding  : 10px;
+    }
+
+}
+
+@media(max-width: 500px) {
+    .Item {
+        justify-content: flex-start;
+    }
+}

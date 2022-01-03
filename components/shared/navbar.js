@@ -1,7 +1,7 @@
 import { signOut } from "next-auth/client";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
 import { DARK_MODE } from "../../store/reducers";
 import { links } from "./navbar-links";
@@ -40,11 +40,24 @@ function Navbar(props) {
     <Fragment>
       <div className={containerClass}>
         {/* <p>{props.user.name}</p> */}
-        <nav>{items}</nav>
-        <button className={classes.Button} onClick={() => signOut("google")}>
-          Logout
-        </button>
-        <ModeSelector style={{ position: "relative" }} size={"2x"} />
+        <nav>
+          {items}
+          <section className={classes.MobileOptions}>
+            <ModeSelector style={{ position: "relative" }} size={"2x"} />
+            <button
+              className={classes.Button}
+              onClick={() => signOut("google")}
+            >
+              Logout
+            </button>
+          </section>
+        </nav>
+        <div className={classes.DesktopOptions}>
+          <button className={classes.Button} onClick={() => signOut("google")}>
+            Logout
+          </button>
+          <ModeSelector style={{ position: "relative" }} size={"2x"} />
+        </div>
       </div>
       <div className={classes.Content}>{props.children}</div>
     </Fragment>

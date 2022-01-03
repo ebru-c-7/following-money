@@ -118,3 +118,15 @@
 .Light .Logo {
     border-color: var(--dark);
 } */
+
+
+@media(max-width: 900px) {
+    .Layout {
+        grid-template-areas: "logo header header header"
+            "side side side side"
+            "main main main main";
+        grid-template-rows   : max-content auto auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+}
